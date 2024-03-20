@@ -2,7 +2,16 @@
 #include <time.h>
 #include <stdlib.h>
 
-char getch();           //  ee
+#define GAME_START 0
+#define GAME_END 1
+
+char getch();                   // check pushing keyboard
+int update(int signum);         // game logic
+int move_block(int command);    // moving block
+int collision_test(int command);//collision test
+int drop(void);                 // 충돌되기 전까지 블록을 다운시킨다
+int check_one_line(void);       // cheching line
+
 
 int block_state = 0;
 int block_number;
@@ -143,10 +152,9 @@ int o_block[4][4][4] =
          {0, 0, 0, 0},
          {0, 0, 0, 0}}};
 
-#define GAME_START 0
-#define GAME_END 1
 
-typedef enum
+
+typedef enum    // command
 {
     DOWN,
     LEFT,

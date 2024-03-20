@@ -20,8 +20,8 @@ void display_tetris();		// 게임 실행 화면
 int game_start();			// 게임 시작 세팅_설정값
 int init_tetris_table();	// 게임 시작 세팅_화면
 int update(int signum);		// 게임 로직
-void save_result(int);      // save
-void print_result(void);    //
+void save_result(int);      // save resultOfGame 
+void print_result(void);    // print result_point, name, time
 
 
 int game;
