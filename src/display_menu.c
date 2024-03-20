@@ -1,5 +1,5 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 int display_menu()
 {
@@ -7,15 +7,15 @@ int display_menu()
 
     system("clear");
 
-    printf("Tetris jbk\n");
-    printf("------------------------------------------\n");
+    printf("Tetris csk\n");
+    printf("-------------------\n");
     printf("\t\tGAME MENU\n");
-    printf("------------------------------------------\n");
-    printf("1. GAME START\n");
+    printf("-------------------\n");
+    printf("1. Game Start\n");
     printf("2. Search history\n");
     printf("3. Record Output\n");
-    printf("4. EXIT\n");
+    printf("4. Quit\n");
 
-    scanf("%d",&menu);
+    scanf("%d", &menu);
     return menu;
 }
