@@ -2,7 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-char getch();           // 
+char getch();           //  ee
 
 int block_state = 0;
 int block_number;
