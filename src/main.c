@@ -17,11 +17,15 @@
 
 int display_menu();
 void display_tetris();
-int game;
 int update(int signum);
+int game_start();
+int init_tetris_table();
+
+int game;
 int x = 3;
 int y = 0;
 int point = 0;
+
 extern int tetris_table[21][10];
 
 /**
@@ -30,28 +34,7 @@ extern int tetris_table[21][10];
  * @param timer signal을 설정하는 구조체 여기에 갱신 시간을 정한다.
  * @details 이 함수에서는 x, y, point 값을 초기화 시킨다.
  */
-int game_start()
-{
-    // signal 설정
-    static struct itimerval timer;
-    signal(SIGVTALRM, update);
-    timer.it_value.tv_sec = 0;
-    timer.it_value.tv_usec = 16667;
-    timer.it_interval.tv_sec = 0;
-    timer.it_interval.tv_usec = 16667;
-    setitimer(ITIMER_VIRTUAL, &timer, NULL);
-    while (1)
-    {
-        if (game == GAME_END)
-        {
-            x = 3;
-            y = 0;
-            point = 0;
-            return 1;
-        }
-    }
-    game = GAME_END;
-}
+
 
 int main()
 {
@@ -75,6 +58,30 @@ int main()
         break;
     }
     return 0;
+}
+
+int game_start()
+{
+    // signal 설정
+    static struct itimerval timer;
+    signal(SIGVTALRM, update);
+    timer.it_value.tv_sec = 0;
+    timer.it_value.tv_usec = 16667;
+    timer.it_interval.tv_sec = 0;
+    timer.it_interval.tv_usec = 16667;
+    setitimer(ITIMER_VIRTUAL, &timer, NULL);
+
+    while (1)
+    {
+        if (game == GAME_END)
+        {
+            x = 3;
+            y = 0;
+            point = 0;
+            return 1;
+        }
+    }
+    game = GAME_END;
 }
 
 int init_tetris_table()
