@@ -15,11 +15,12 @@
 #define GAME_START 0
 #define GAME_END 1
 
-int display_menu();
-void display_tetris();
-int update(int signum);
-int game_start();
-int init_tetris_table();
+int display_menu();			// 게임 메뉴 화면
+void display_tetris();		// 게임 실행 화면
+int game_start();			// 게임 시작 세팅_설정값
+int init_tetris_table();	// 게임 시작 세팅_화면
+int update(int signum);		// 게임 로직
+
 
 int game;
 int x = 3;

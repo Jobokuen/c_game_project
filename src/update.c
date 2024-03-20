@@ -2,17 +2,20 @@
 #include <time.h>
 #include <stdlib.h>
 
+char getch();           // 
+
+int block_state = 0;
+int block_number;
+int next_block_number;
 
 extern int x;
 extern int y;
-int block_state = 0;
 extern int block[4][4][4];
 extern int point;
 extern int tetris_table[21][10];
-int block_number;
-int next_block_number;
-char getch();
 extern int game;
+
+// block 모양
 int i_block[4][4][4] =
     {
         {{1, 1, 1, 1},
@@ -31,7 +34,6 @@ int i_block[4][4][4] =
          {1, 0, 0, 0},
          {1, 0, 0, 0},
          {1, 0, 0, 0}}};
-
 int t_block[4][4][4] =
     {
         {{1, 0, 0, 0},
@@ -50,7 +52,6 @@ int t_block[4][4][4] =
          {1, 1, 0, 0},
          {0, 1, 0, 0},
          {0, 0, 0, 0}}};
-
 int s_block[4][4][4] =
     {
         {{1, 0, 0, 0},
@@ -69,7 +70,6 @@ int s_block[4][4][4] =
          {0, 1, 1, 0},
          {0, 0, 0, 0},
          {0, 0, 0, 0}}};
-
 int z_block[4][4][4] =
     {
         {{0, 1, 0, 0},
@@ -88,7 +88,6 @@ int z_block[4][4][4] =
          {1, 0, 1, 0},
          {0, 0, 0, 0},
          {0, 0, 0, 0}}};
-
 int l_block[4][4][4] =
     {
         {{1, 0, 0, 0},
@@ -107,7 +106,6 @@ int l_block[4][4][4] =
          {1, 1, 1, 0},
          {0, 0, 0, 0},
          {0, 0, 0, 0}}};
-
 int j_block[4][4][4] =
     {
         {{0, 1, 0, 0},
@@ -126,7 +124,6 @@ int j_block[4][4][4] =
          {0, 0, 1, 0},
          {0, 0, 0, 0},
          {0, 0, 0, 0}}};
-
 int o_block[4][4][4] =
     {
         {{1, 1, 0, 0},
@@ -156,6 +153,7 @@ typedef enum
     RIGHT,
     ROTATE
 } COMMAND;
+
 int update(int signum)
 {
     static int downcount = 0;
