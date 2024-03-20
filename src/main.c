@@ -20,6 +20,8 @@ void display_tetris();		// 게임 실행 화면
 int game_start();			// 게임 시작 세팅_설정값
 int init_tetris_table();	// 게임 시작 세팅_화면
 int update(int signum);		// 게임 로직
+void save_result(int);      // save
+void print_result(void);    //
 
 
 int game;
@@ -53,6 +55,7 @@ int main()
         break;
     case 3:
         printf("Record Output\n");
+        print_result();
         break;
     case 4:
         printf("Quit\n");
@@ -76,6 +79,8 @@ int game_start()
     {
         if (game == GAME_END)
         {
+            signal(SIGVTALRM, SIG_IGN);
+            save_result(point);
             x = 3;
             y = 0;
             point = 0;
